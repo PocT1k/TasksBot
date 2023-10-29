@@ -33,6 +33,7 @@ def DB_create():
 pass
 
 def DB_writeTask(user, task):
+    DB_create()
     cur.execute(
         f'''INSERT INTO tasks (user_id, user_counter, task_number, task_name, task_year, task_month, task_day, task_hour, task_minute)
             VALUES ({user.id}, {user.counter}, {task.number}, "{task.name}", {task.timeAdd.year}, {task.timeAdd.month}, {task.timeAdd.day},
@@ -42,6 +43,7 @@ def DB_writeTask(user, task):
 pass
 
 def DB_readTable():
+    DB_create()
     cur.execute("SELECT * FROM tasks")
     return cur.fetchall()
 pass

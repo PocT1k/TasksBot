@@ -11,7 +11,7 @@ def readBD():
             users[row[0]] = User(row[0])
         users[row[0]].counter = row[1]
         users[row[0]].tasks.append(Task(row[2], row[3]))
-        users[row[0]].tasks[row[2]].timeAdd = TimeAdd(f'{row[4]}-{row[5]}-{row[6]} {row[7]}:{row[8]}')
+        users[row[0]].tasks[row[2]].timeAdd = TimeAdd(f'{row[4].zfill(4)}-{row[5].zfill(2)}-{row[6].zfill(2)} {row[7].zfill(2)}:{row[8].zfill(2)}')
 pass
 
 if __name__ == '__main__':

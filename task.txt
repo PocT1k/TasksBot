@@ -16,3 +16,19 @@
 Бот может предоставлять доступ к спискам задач, календарю и ежедневнику через соответствующие меню.
 5)Пользовательские настройки:
 Пользователи могут настраивать параметры уведомлений, напоминаний и предпочтительный формат отображения информации.
+
+# users[854903492] = User(854903492)
+#
+# number = users[854903492].counter
+# users[854903492].counter = number
+# users[854903492].tasks.append(Task(number, "fake"))
+#
+# number = users[854903492].counter
+# number += 1
+# users[854903492].counter = number
+# users[854903492].tasks.append(Task(number, "Полить цветы"))
+#
+# number = users[854903492].counter
+# number += 1
+# users[854903492].counter = number
+# users[854903492].tasks.append(Task(number, "Прополоть картошку"))
