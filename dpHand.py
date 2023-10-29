@@ -41,6 +41,7 @@ async def task(message: types.Message):
     if users.get(user_id) is None:
         await message.answer("Список задач пуст",
                              reply_markup=markup)
+        return
     #Принт задач пользователя
     else:
         answ = ''
@@ -50,7 +51,12 @@ async def task(message: types.Message):
                 continue
             answ += task.to_string()
 
-        await message.answer(answ, reply_markup=markup)
+        if answ == '':
+            await message.answer("Список задач пуст",
+                                 reply_markup=markup)
+            return
+        else:
+            await message.answer(answ, reply_markup=markup)
 
     #Как пользоваться ботом
     await message.answer("/tn Название\n"
@@ -94,7 +100,11 @@ async def tr(message: types.Message):
     text = message.text
     text = text[4:]
     array = text.split()
-    array.insert(0, '')
+
+    if (len(array) == 0):
+        await message.answer("Не введён номер",
+                             reply_markup=markup)
+        return
 
     # Если введено не число
     if (array[0].isdigit() == False) or (array[0] == '0'):
@@ -125,7 +135,11 @@ async def td(message: types.Message):
     text = message.text
     text = text[4:]
     array = text.split()
-    array.insert(0, '')
+
+    if (len(array) == 0):
+        await message.answer("Не введён номер",
+                             reply_markup=markup)
+        return
 
     # Если введено не число
     if (array[0].isdigit() == False) or (array[0] == '0'):
@@ -142,6 +156,7 @@ async def td(message: types.Message):
         # Перебор задач пользователя
         number = 0
         for task in users[user_id].tasks:
+            print(number, task.name)
             task.number = number
             number += 1
 
