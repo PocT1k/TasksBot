@@ -156,7 +156,6 @@ async def td(message: types.Message):
         # Перебор задач пользователя
         number = 0
         for task in users[user_id].tasks:
-            print(number, task.name)
             task.number = number
             number += 1
 
