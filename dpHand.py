@@ -41,7 +41,6 @@ async def task(message: types.Message):
     if users.get(user_id) is None:
         await message.answer("Список задач пуст",
                              reply_markup=markup)
-        return
     #Принт задач пользователя
     else:
         answ = ''
@@ -54,7 +53,6 @@ async def task(message: types.Message):
         if answ == '':
             await message.answer("Список задач пуст",
                                  reply_markup=markup)
-            return
         else:
             await message.answer(answ, reply_markup=markup)
 
