@@ -1,3 +1,4 @@
+import dpHand
 from config import *
 from structs import *
 from database import *
@@ -6,13 +7,13 @@ from database import *
 markup = types.ReplyKeyboardRemove() #Пустая клавиатура
 
 @dp.message_handler(commands=['myid']) # Обработчик команды /myid
-async def start(message: types.Message):
+async def myid(message: types.Message):
     await message.answer(message.from_user.id,
                          reply_markup=markup)
 #myid
 
 @dp.message_handler(commands=['help']) # Обработчик команды /help
-async def start(message: types.Message):
+async def help(message: types.Message):
     await message.answer("/task - работа с задачами",
                          reply_markup=markup)
 #help
@@ -34,7 +35,7 @@ async def start(message: types.Message):
 #start
 
 @dp.message_handler(commands=['task']) # Обработчик команды /task
-async def start(message: types.Message):
+async def task(message: types.Message):
     user_id = message.from_user.id
 
     #Если у пользователя нет задач
@@ -63,7 +64,7 @@ async def start(message: types.Message):
 #task
 
 @dp.message_handler(commands=['tn']) # Обработчик команды /tn
-async def start(message: types.Message):
+async def tn(message: types.Message):
     user_id = message.from_user.id
     text = message.text
     name = text[4:]
@@ -89,7 +90,7 @@ async def start(message: types.Message):
 #tn
 
 @dp.message_handler(commands=['tr']) # Обработчик команды /tr
-async def start(message: types.Message):
+async def tr(message: types.Message):
     user_id = message.from_user.id
     text = message.text
     text = text[4:]
@@ -107,6 +108,7 @@ async def start(message: types.Message):
     try:
         name = users[user_id].tasks[number].name
         users[user_id].tasks[number].name = newName
+
         await message.answer("Задача изменена",
                              reply_markup=markup)
     except IndexError:
@@ -115,7 +117,7 @@ async def start(message: types.Message):
 #tr
 
 @dp.message_handler(commands=['td']) # Обработчик команды /td
-async def start(message: types.Message):
+async def td(message: types.Message):
     user_id = message.from_user.id
     text = message.text
     text = text[4:]
@@ -147,7 +149,7 @@ async def start(message: types.Message):
 #td
 
 @dp.message_handler(commands=['save']) # Обработчик команды /save
-async def start(message: types.Message):
+async def save(message: types.Message):
     DB_delete()
     DB_create()
 
@@ -160,7 +162,7 @@ async def start(message: types.Message):
 #save
 
 @dp.message_handler(commands=['end']) # Обработчик команды /end
-async def start(message: types.Message):
+async def end(message: types.Message):
     user_id = message.from_user.id
 
     if user_id == 854903492:
