@@ -95,6 +95,7 @@ async def tr(message: types.Message):
     text = message.text
     text = text[4:]
     array = text.split()
+    array.insert(0, '')
 
     # Если введено не число
     if (array[0].isdigit() == False) or (array[0] == '0'):
@@ -105,8 +106,11 @@ async def tr(message: types.Message):
     number = int(array.pop(0))
     newName = ' '.join(array)
     #Ищем нужную задачу
+    if newName == '':
+        await message.answer("Не введено название",
+                             reply_markup=markup)
+        return
     try:
-        name = users[user_id].tasks[number].name
         users[user_id].tasks[number].name = newName
 
         await message.answer("Задача изменена",
@@ -122,6 +126,7 @@ async def td(message: types.Message):
     text = message.text
     text = text[4:]
     array = text.split()
+    array.insert(0, '')
 
     # Если введено не число
     if (array[0].isdigit() == False) or (array[0] == '0'):
