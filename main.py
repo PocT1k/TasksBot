@@ -1,6 +1,6 @@
 from aiogram import executor
 
-from dpHand  import *
+from dpHand import *
 from database import *
 
 
